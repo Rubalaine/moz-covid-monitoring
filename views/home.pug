@@ -1,0 +1,66 @@
+extends base
+mixin cardStats(data, status)
+  .card.is-shadowed.has-border(class=`${status}`)
+    .card-top
+      h2= `${data} Total 😐`
+    .card-botttom
+block content
+  .container
+    include header
+    main.main-side
+      .stats
+        .card.is-shadowed.has-border.is-normal
+          .card-top
+            h2= `${country.cases.confirmed} casos confirmados`
+            h3= `+${country.cases.new} casos Hoje`
+          .card-botttom
+            -let diff = Date.now() - country.lastTimeUpdated;
+            -let hourDiff = Math.floor(diff / 3600 / 1000);
+            -let mindiff = Math.floor(diff / 60 /1000); 
+
+            span= `🕐 atualizado a ${hourDiff>0? hourDiff + "h": mindiff + "m"} atrás`
+        .card.is-shadowed.has-border.is-dark
+          .card-top
+            h2= `${country.cases.active} casos activos`
+            h3= `${country.cases.recovered} Recuperados ` 
+            h3= `${country.cases.dead} Mortos`  
+
+          .card-botttom
+        .card.is-shadowed.has-border.is-good
+          .card-top
+            h2= `${country.cases.recovered} Recuperados ` 
+          .card-botttom
+        .card.is-shadowed.has-border.is-dark
+          .card-top
+            h2= `${country.cases.dead} Mortos`  
+          .card-botttom
+      .content.has-border.is-shadowed
+        .main-title
+          h1 Dados da COVID-19 em Mocambique
+        .main-table
+          table.is-table.has-border.is-shadowed
+            tr
+              th Provincia
+              th Confirmados
+              th Novos
+              th Recuperados
+              th Mortos
+              th ativos
+            each province in country.provinces
+              tr
+                td= province.name
+                td.text-normal= province.cases.confirmed
+                td.text-good= `+${province.cases.new}`
+                td.text-good= province.cases.recovered
+                td.text-bad= province.cases.dead
+                td.text-normalless= province.cases.active
+      .right-side.has-border.is-shadowed
+        #map(data-provinces=`${JSON.stringify(country.provinces)}` style='width: 100%; height: 100%;' )
+    //-     cases: {
+    //-   confirmed: Number,
+    //-   new: Number,
+    //-   recovered: Number,
+    //-   dead: Number,
+    //-   active: Number,
+    //-   per100k: Number,
+    //- },

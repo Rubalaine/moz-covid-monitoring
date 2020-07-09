@@ -1,0 +1,38 @@
+extends base
+block content
+  .container
+    include header
+    main.is-full.has-border
+      .main-table
+        table.is-table.has-border.is-shadowed
+          tr
+            th Provincia
+            th Confirmados
+            th Novos
+            th Recuperados
+            th Mortos
+            th ativos
+            th
+          each province in provinces
+            .form-popup(id=`${province.slug}`)
+              span.helper
+              div
+                .popupCloseButton(onclick=`closePopup(${JSON.stringify(province.slug)})`) &times;
+                p= province.name
+                span novos:
+                input.has-border(type="number", id=`${province.slug}-new` required)
+                span recuperados:
+                input.has-border(type="number", id=`${province.slug}-recovered` required)
+                span mortos:
+                input.has-border(type="number" id=`${province.slug}-dead` required)
+                button.has-border.submit(data-getprovince=`${JSON.stringify(province)}`) confirmar
+            tr
+              td= province.name
+              td.text-normalless=province.cases.confirmed 
+              td.text-normal=province.cases.new 
+              td.text-good=province.cases.recovered 
+              td.text-bad=province.cases.dead 
+              td.text-normalless=province.cases.active 
+              td
+                button.button-success.has-border(onclick=`editData(${JSON.stringify(province.slug)})`) alterar
+
