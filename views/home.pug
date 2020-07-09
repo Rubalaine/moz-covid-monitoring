@@ -56,24 +56,26 @@ block content
           .card-botttom
       .content.has-border.is-shadowed
         .main-title
-          h1 Dados da COVID-19 em Mocambique
+          h2 informacão por provincia
         .main-table
           table.is-table.has-border.is-shadowed
-            tr
-              th Provincia
-              th Confirmados
-              th Novos
-              th Recuperados
-              th Mortos
-              th ativos
-            each province in country.provinces
+            thead
               tr
-                td= province.name
-                td.text-normal= province.cases.confirmed
-                td.text-abnormal= `+${province.cases.new}`
-                td.text-good= province.cases.recovered
-                td.text-bad= province.cases.dead
-                td.text-normalless= province.cases.active
+                th Provincia
+                th Confirmados
+                th Novos
+                th Recuperados
+                th Mortos
+                th ativos
+            tbody
+              each province in country.provinces
+                tr
+                  td.province= province.name
+                  td.text-normal= province.cases.confirmed
+                  td.text-abnormal= `+${province.cases.new}`
+                  td.text-good= province.cases.recovered
+                  td.text-bad= province.cases.dead
+                  td.text-normalless= province.cases.active
       .right-side.has-border.is-shadowed
         #map(data-provinces=`${JSON.stringify(country.provinces)}` style='width: 100%; height: 100%;' )
     //-     cases: {
