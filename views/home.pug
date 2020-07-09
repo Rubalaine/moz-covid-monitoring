@@ -8,31 +8,51 @@ block content
   .container
     include header
     main.main-side
-      .stats
-        .card.is-shadowed.has-border.is-normal
-          .card-top
-            h2= `${country.cases.confirmed} casos confirmados`
-            h3= `+${country.cases.new} casos Hoje`
-          .card-botttom
+      .stats.has-border.is-shadowed
+        .card
+          .card-top.text-align-center
+            p  Confirmados
+            h1.text-normal.is-marginless= `${country.cases.confirmed}`
+            p  Novos
+            h1.is-marginless.text-abnormal= `+${country.cases.new} `
             -let diff = Date.now() - country.lastTimeUpdated;
             -let hourDiff = Math.floor(diff / 3600 / 1000);
             -let mindiff = Math.floor(diff / 60 /1000); 
+            p= `🕐 atualizado a ${hourDiff>0? hourDiff + "h": mindiff + "m"} atrás`
+        .card
+          .card-top.text-align-center
+            p  Activos
+            h2.text-normalless.is-marginless= `${country.cases.active}` 
+            p Recuperados
+            h2.text-good.is-marginless= `${country.cases.recovered}` 
+            p Mortos
+            h2.text-bad.is-marginless= `${country.cases.dead}`
+        .card
+          .card-top.text-align-center
+            p Dias de Pandemia
+            h2.text-abnormal.is-marginless= `${country.pandemyDays}` 
+            - let prov = {};
+            - prov.max = 0; prov.name = '';
+            - country.provinces.forEach(element => { if(element.cases.confirmed>prov.max) {prov.max = element.cases.confirmed; prov.name = element.name}});
+            p Provincia com Mais casos
+            h2.text-bad.is-marginless= `${prov.name}`
+            - prov.min = prov.max; prov.name2 = '';
+            - country.provinces.forEach(element => { if(element.cases.confirmed<prov.min) {prov.min = element.cases.confirmed; prov.name2 = element.name}});
+            p provincia com menos casos
+            h2.text-good.is-marginless= `${prov.name2}`
 
-            span= `🕐 atualizado a ${hourDiff>0? hourDiff + "h": mindiff + "m"} atrás`
-        .card.is-shadowed.has-border.is-dark
-          .card-top
-            h2= `${country.cases.active} casos activos`
-            h3= `${country.cases.recovered} Recuperados ` 
-            h3= `${country.cases.dead} Mortos`  
 
-          .card-botttom
-        .card.is-shadowed.has-border.is-good
+        .card
           .card-top
-            h2= `${country.cases.recovered} Recuperados ` 
-          .card-botttom
-        .card.is-shadowed.has-border.is-dark
-          .card-top
-            h2= `${country.cases.dead} Mortos`  
+            h2.is-marginless= `Apoio e informacão`
+            p
+              a(href="http://misau.gov.mz") MISAU
+            p 
+              a(href="http://covid19.ins.gov.mz") #fica atento
+            p 
+              a(href="http://riscocovid19.misau.gov.mz") auto-avaliacão de riscocovid19
+            p vodacom 84146/Tmcel 82149/ Movitel 1490
+            p central de chamadas 110
           .card-botttom
       .content.has-border.is-shadowed
         .main-title
@@ -50,7 +70,7 @@ block content
               tr
                 td= province.name
                 td.text-normal= province.cases.confirmed
-                td.text-good= `+${province.cases.new}`
+                td.text-abnormal= `+${province.cases.new}`
                 td.text-good= province.cases.recovered
                 td.text-bad= province.cases.dead
                 td.text-normalless= province.cases.active
