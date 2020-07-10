@@ -20,7 +20,6 @@ mongoose
     console.log("conectado com sucesso");
   });
 const app = require("./app");
-console.log("dotenv", process.env);
 const port = process.env.PORT || 8080;
 server = app.listen(port, () => {
   console.log("listening on port: ", port);
