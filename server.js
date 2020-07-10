@@ -1,6 +1,13 @@
 const mongoose = require("mongoose");
 
-const DB = "mongodb://localhost:27017/covid-moz";
+process.on("uncaughtException", (err) => {
+  console.log("UNCAUGHT EXCEPTION!  Shutting down...");
+  console.log(err.name, err.message);
+  process.exit(1);
+});
+
+const DB =
+  "mongodb+srv://kelven-admin:eu-sou-gostoso@covid-monitor-cluster.tjpr0.mongodb.net/covid-monitor?retryWrites=true&w=majority";
 mongoose
   .connect(DB, {
     useNewUrlParser: true,
@@ -13,7 +20,14 @@ mongoose
   });
 const app = require("./app");
 
-const port = 4000;
+const port = 8080;
 server = app.listen(port, () => {
   console.log("listening on port: ", port);
+});
+process.on("unhandledRejection", (err) => {
+  console.log("UNHANDLED REJECTION! 💥 Shutting down...");
+  console.log(err.name, err.message);
+  server.close(() => {
+    process.exit(1);
+  });
 });
