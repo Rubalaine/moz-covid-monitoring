@@ -72,7 +72,7 @@ block content
                 tr
                   td.province= province.name
                   td.text-normal= province.cases.confirmed
-                  td.text-abnormal= `+${province.cases.new}`
+                  td.text-abnormal= `${province.cases.new?"+ "+province.cases.new:"-"}`
                   td.text-good= province.cases.recovered
                   td.text-bad= province.cases.dead
                   td.text-normalless= province.cases.active
