@@ -20,7 +20,7 @@ mongoose
   });
 const app = require("./app");
 
-const port = 8080;
+const port = procces.env.PORT || 8080;
 server = app.listen(port, () => {
   console.log("listening on port: ", port);
 });
