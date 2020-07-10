@@ -1,21 +1,22 @@
-doctype html
-head
+html(lang="pt-pt")
+  head
 
-  meta(charset='UTF-8')
-  meta(name="description" content='Site com atualizacoes diárias dos numeros da covid-19 em Moçambique')
-  meta(name="keywords" content="coronavírus, covid-19, moçambique")
-  meta(name="author" content="Kelven Rubalaine")
-  meta(name='viewport', content='width=device-width, initial-scale=1.0')
-  link(rel='stylesheet', href='/style/home.css')
-  link(rel='shortcut icon', href='/images/favicon.ico', type='image/x-icon')
-  title= title
-  script(src='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js')
-  link(href='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css', rel='stylesheet')
-body
-  block content
+    meta(charset='UTF-8')
+    meta(name="description" content='Site com atualizacoes diárias dos numeros da covid-19 em Moçambique')
+    meta(name="keywords" content="coronavírus, covid-19, moçambique")
+    meta(name="author" content="Kelven Rubalaine")
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet', href='/style/home.css')
+    link(rel='shortcut icon', href='/images/favicon.ico', type='image/x-icon')
+    title= title
+    script(src='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js')
+    link(href='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css', rel='stylesheet')
+    script(src='https://kit.fontawesome.com/2069657f14.js', crossorigin='anonymous')
+  body
+    block content
 
-  script(src='/scripts/mapbox.js')
-  script(src='/scripts/index.js')
-  script(src='https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js')
+    script(src='/scripts/mapbox.js')
+    script(src='/scripts/index.js')
+    script(src='https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js')
 
 

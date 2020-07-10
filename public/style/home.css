@@ -191,6 +191,7 @@ table {
   border-collapse: collapse;
   width: 100%;
 }
+
 /* td {
   font-weight: bold;
 } */
@@ -340,6 +341,35 @@ ul {
   padding: 0;
   overflow: hidden;
 }
+.topnav {
+  overflow: hidden;
+  /* background-color: #333; */
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  /* color: #f2f2f2; */
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* .topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-image: url("good.png");
+  background-color: #4caf50; 
+  color: white;
+} */
+
+.topnav .icon {
+  display: none;
+}
 
 li {
   float: right;
@@ -352,17 +382,42 @@ li a {
   padding: 0.5em 16px;
   text-decoration: none;
 }
+.is-twitter {
+  background-color: #2ca0ff;
+  color: white;
+  padding: 1px;
+}
+.is-twitter:hover {
+  color: white;
+  background-color: #008cff;
+}
+.topnav a:not(.active) {
+  float: right;
+}
+@media screen and (max-width: 600px) {
+  .topnav a:not(:first-child) {
+    display: none;
+  }
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+}
 
-li a:hover:not(.active) {
-  color: #217cc7;
-}
-.logo {
-  float: left;
-}
-.logo-img {
-  height: 35px;
-  width: 35px;
-  margin-top: 2px;
+@media screen and (max-width: 600px) {
+  .topnav.responsive {
+    position: relative;
+  }
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
 }
 @media (max-width: 768px) {
   html {
@@ -376,6 +431,9 @@ li a:hover:not(.active) {
       "ad ad ad ad";
     grid-area: main;
   }
+}
+.is-bold {
+  font-weight: bold;
 }
 @media (max-width: 425px) {
   .main-side {
