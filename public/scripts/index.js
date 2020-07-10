@@ -25,6 +25,7 @@ document.querySelectorAll(".submit").forEach((submit) => {
       oldProvince.cases.recovered;
     cases.confirmed = oldProvince.cases.confirmed + cases.new;
     cases.active = cases.confirmed - cases.recovered - cases.dead;
+    cases.dead += oldProvince.cases.dead;
     console.log(oldProvince.cases);
     console.log(cases);
     await fillData(oldProvince.id, cases, Date.now());
@@ -36,7 +37,7 @@ const fillData = async (id, cases, lastTimeUpdated) => {
     //console.log(email, password);
     const res = await axios({
       method: "PATCH",
-      url: `http://127.0.0.1:4000/covid-api/moz/province/${id}`,
+      url: `/covid-api/moz/province/${id}`,
       data: {
         lastTimeUpdated,
         cases,
@@ -49,16 +50,3 @@ const fillData = async (id, cases, lastTimeUpdated) => {
     console.log("error......", error);
   }
 };
-
-// document.querySelector(".submit").addEventListener("click", (event) => {
-//   event.preventDefault();
-//   console.log(clicado);
-// });
-// window.onabort('load', function(){
-//     function editData(data) {
-//         console.log(data);
-//         document.getElementById(data).style.display = "block";
-//       }
-//     document.querySelectorAll('button')
-//     document.querySelectorAll(".box").forEach(box => { box.style.display = "none" })
-// })

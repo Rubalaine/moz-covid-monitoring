@@ -20,11 +20,11 @@ block content
                 .popupCloseButton(onclick=`closePopup(${JSON.stringify(province.slug)})`) &times;
                 p= province.name
                 span novos:
-                input.has-border(type="number", id=`${province.slug}-new` required)
+                input.has-border(type="number", id=`${province.slug}-new` required value="0")
                 span recuperados:
-                input.has-border(type="number", id=`${province.slug}-recovered` required)
+                input.has-border(type="number", id=`${province.slug}-recovered` required value="0")
                 span mortos:
-                input.has-border(type="number" id=`${province.slug}-dead` required)
+                input.has-border(type="number" id=`${province.slug}-dead` required value="0")
                 button.has-border.submit(data-getprovince=`${JSON.stringify(province)}`) confirmar
             tr
               td= province.name
