@@ -59,8 +59,13 @@ body {
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-areas:
     "st st st st"
-    "ct ct ct ad";
+    "ct ct ct ad"
+    "ft ft ft ft";
   grid-area: main;
+}
+footer {
+  grid-area: ft;
+  background-color: white;
 }
 .stats {
   background-color: white;
@@ -428,7 +433,8 @@ li a {
     grid-template-areas:
       "st st st st"
       "ct ct ct ct"
-      "ad ad ad ad";
+      "ad ad ad ad"
+      "ft ft ft ft";
     grid-area: main;
   }
 }
@@ -446,7 +452,8 @@ li a {
     grid-template-areas:
       "st"
       "ct"
-      "ad";
+      "ad"
+      "ft";
     grid-area: main;
   }
   .stats {
