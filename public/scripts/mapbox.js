@@ -31,7 +31,7 @@ provinces.forEach((marker) => {
       new mapboxgl.Popup()
         .setLngLat(marker.geoLocation.coordinates)
         .setHTML(
-          `<p>${marker.name} </p><span class="t-normal has-border">${marker.cases.confirmed}</span><span class="t-bad has-border">${marker.cases.active}</span><span class="t-good has-border">${marker.cases.recovered}</span>`
+          `<p>${marker.name} </p><span class="t-normal has-border">${marker.cases.confirmed}</span><span class="t-bad has-border">${marker.cases.dead}</span><span class="t-good has-border">${marker.cases.recovered}</span>`
         )
     )
     .addTo(map);
