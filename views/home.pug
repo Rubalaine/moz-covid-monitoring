@@ -34,7 +34,7 @@ block content
             - let prov = {};
             - prov.max = 0; prov.name = '';
             - country.provinces.forEach(element => { if(element.cases.confirmed>prov.max) {prov.max = element.cases.confirmed; prov.name = element.name}});
-            p Provincia com Mais casos
+            p Provincía com Mais casos
             h2.text-bad.is-marginless= `${prov.name}`
             - prov.min = prov.max; prov.name2 = '';
             - country.provinces.forEach(element => { if(element.cases.confirmed<prov.min) {prov.min = element.cases.confirmed; prov.name2 = element.name}});
@@ -44,7 +44,7 @@ block content
 
         .card
           .card-top
-            h2.is-marginless= `Apoio e informacão`
+            h2.is-marginless= `Apoio e informação`
             p
               a(href="http://misau.gov.mz") MISAU
             p 
@@ -56,12 +56,12 @@ block content
           .card-botttom
       .content.has-border.is-shadowed
         .main-title
-          h2 Casos por provincia
+          h2 Casos por província
         .main-table
           table.is-table.has-border.is-shadowed
             thead
               tr
-                th Provincia
+                th Província
                 th Confirmados
                 th Novos
                 th Recuperados
@@ -78,11 +78,3 @@ block content
                   td.text-normalless= province.cases.active
       .right-side.has-border.is-shadowed
         #map(data-provinces=`${JSON.stringify(country.provinces)}` style='width: 100%; height: 100%;' )
-    //-     cases: {
-    //-   confirmed: Number,
-    //-   new: Number,
-    //-   recovered: Number,
-    //-   dead: Number,
-    //-   active: Number,
-    //-   per100k: Number,
-    //- },
