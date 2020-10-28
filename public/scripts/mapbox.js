@@ -1,6 +1,7 @@
 const provinces = JSON.parse(document.getElementById("map").dataset.provinces);
-mapboxgl.accessToken =
-  "pk.eyJ1Ijoia2VsdmVuLXJ1YmFsYWluZSIsImEiOiJja2NiMGcyN2EwZWMxMnR1bnVwcXZibGVjIn0.iD2myeN-lQH1xIpogUOA0w";
+
+//insira o seu token de acesso para o mapbox
+mapboxgl.accessToken = "";
 
 var map = new mapboxgl.Map({
   container: "map",
