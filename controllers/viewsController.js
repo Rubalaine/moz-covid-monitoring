@@ -37,3 +37,14 @@ exports.getProvinceStats = async (request, response) => {
     });
   }
 };
+exports.getMe = async (request, response) => {
+  try {
+    response.status(200).render("about");
+  } catch (error) {
+    console.log(error.stack);
+    response.status(500).json({
+      status: "fail",
+      message: error.message,
+    });
+  }
+};

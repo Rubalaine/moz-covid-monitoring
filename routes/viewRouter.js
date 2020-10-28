@@ -5,5 +5,6 @@ const router = express.Router();
 
 router.get("/", viewsController.getCountryStats);
 router.get("/admin/:id", viewsController.getProvinceStats);
+router.get("/about", viewsController.getMe);
 
 module.exports = router;

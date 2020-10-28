@@ -15,10 +15,13 @@ block content
             h1.text-normal.is-marginless= `${country.cases.confirmed}`
             p  Novos
             h1.is-marginless.text-abnormal= `+${country.cases.new} `
+            p Ultima Atualizaçao
+            -let hora = country.lastTimeUpdated;
             -let diff = Date.now() - country.lastTimeUpdated;
             -let hourDiff = Math.floor(diff / 3600 / 1000);
             -let mindiff = Math.floor(diff / 60 /1000); 
-            p= `🕐 atualizado a ${hourDiff>0? hourDiff + "h": mindiff + "m"} atrás`
+            p= `${hora.getHours()}:${hora.getMinutes()}h do dia ${hora.getDate()}-0${hora.getMonth()+1}-${hora.getFullYear()}`
+            //- p= `🕐 atualizado a ${hourDiff>0? hourDiff + "h": mindiff + "m"} atrás`
         .card
           .card-top.text-align-center
             p  Activos
